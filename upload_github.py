@@ -38,17 +38,18 @@ access_token = sys.argv[1]
 g = Github(access_token)
 user = g.get_user()
 user.create_repo(repo_name)
+cmd1 = f"cp ./history/{repo_name}.md ./Pixiv日榜/README.md"
+os.system(cmd1)
 
-
-remote_repo = f'''git remote add origin https://x-access-token:{access_token}@github.com/blogrepo/{repo_name}.git'''
-ch_dir = "cd ./Pixiv日榜/"+list_dir[0]+'/'
-os.system(ch_dir)
-os.system("git init")
-os.system("git config --local user.name 'blogrepo'")
-os.system("git config --local user.email 'w-gx@outlook.com'")
-os.system("git branch -M master")
-os.system("git add .")
-os.system("git commit -m 'upload'")
-os.system(remote_repo)
-os.system("git push -u origin master")
-os.system("cd ../../")
+# remote_repo = f'''git remote add origin https://x-access-token:{access_token}@github.com/blogrepo/{repo_name}.git'''
+# ch_dir = "cd ./Pixiv日榜/"+list_dir[0]+'/'
+# os.system(ch_dir)
+# os.system("git init")
+# os.system("git config --local user.name 'blogrepo'")
+# os.system("git config --local user.email 'w-gx@outlook.com'")
+# os.system("git branch -M master")
+# os.system("git add .")
+# os.system("git commit -m 'upload'")
+# os.system(remote_repo)
+# os.system("git push -u origin master")
+# os.system("cd ../../")
