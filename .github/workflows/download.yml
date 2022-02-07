@@ -2,8 +2,6 @@
 name: download
 
 on:
-  push:
-    branches: [ master ]
   watch:
     types: started
   schedule:
