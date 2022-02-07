@@ -41,15 +41,19 @@ class PixivApi:
     timeout = 20
     access_token = ''
     refresh_token = ''
+    a_token = ''
+    r_token = ''
     client_id = 'MOBrBDS8blbauoSck0ZfDbtuzpyT'
     client_secret = 'lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj'
     auth_token_url = 'https://oauth.secure.pixiv.net/auth/token'
 
     def __init__(self,a_token,r_token):
+        self.a_token = a_token
+        self.r_token = r_token
         if os.path.exists('session'):
             if self.load_session():
                 self.refresh()
-        self.login_required(a_token,r_token)
+        self.login_required()
 
     def load_session(self):
         cipher = AESCipher()
@@ -77,7 +81,7 @@ class PixivApi:
     def parse_token(self, data):
         return data["access_token"], data["refresh_token"]
 
-    def login(self,a_token,r_token):
+    def login(self):
         """
         logging to Pixiv
         doc: https://gist.github.com/ZipFile/c9ebedb224406f4f11845ab700124362
@@ -130,8 +134,8 @@ class PixivApi:
         #     headers={"User-Agent": self.user_agent},
         # )
         # self.access_token, self.refresh_token = self.parse_token(r.json())
-        self.access_token = a_token
-        self.refresh_token = r_token
+        self.access_token = self.a_token
+        self.refresh_token = self.r_token
         print(f'refresh token: {self.refresh_token}')
         self.refresh()
 
@@ -142,10 +146,10 @@ class PixivApi:
         self.access_token, self.refresh_token = self.aapi.access_token, self.aapi.refresh_token
         self.save_session()
 
-    def login_required(self,a_token,r_token):
+    def login_required(self):
         if not self.access_token:
             print(_('Please login'))
-            self.login(a_token,r_token)
+            self.login()
 
     def get_all_user_illustrations(self, user_id, offset=0, size=-1):
         """
