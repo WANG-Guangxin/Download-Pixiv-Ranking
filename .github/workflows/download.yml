@@ -28,10 +28,9 @@ jobs:
           P_A_TOKEN: ${{ secrets.P_A_TOKEN }}
           P_R_TOKEN: ${{ secrets.P_R_TOKEN }}
         run: |
-          /opt/hostedtoolcache/Python/3.8.12/x64/bin/python -m pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          echo ${{ secrets.P_A_TOKEN }}
-          python3 pixiv.py $P_A_TOKEN $P_R_TOKEN
+          python3 pixiv.py
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
