@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    pixiv.py a_token r_token -r -d 2016-09-24
+    pixiv.py a_token r_token
 """
 import datetime
 import math
