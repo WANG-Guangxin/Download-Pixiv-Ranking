@@ -42,7 +42,7 @@ cmd1 = f"cp ./history/{repo_name}.md ./Pixiv日榜/README.md"
 os.system(cmd1)
 
 remote_repo = f'''git remote add origin https://x-access-token:{access_token}@github.com/blogrepo/{repo_name}.git'''
-os.environ.setdefault('remote_repo',remote_repo)
+os.environ.setdefault('REMOTE_REPO',remote_repo)
 
 # ch_dir = "cd ./Pixiv日榜/"+list_dir[0]+'/'
 # os.system(ch_dir)
