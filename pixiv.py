@@ -336,8 +336,8 @@ def remove_repeat(_):
                                 print('Delete', os.path.join(path, file_name))
 
 
-def main():
-    user = PixivApi()
+def main(a_token,r_token):
+    user = PixivApi(a_token,r_token)
     if len(sys.argv) > 1:
         print(datetime.datetime.now().strftime('%X %x'))
         ids = arguments['<id>']
@@ -385,4 +385,6 @@ def main():
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='pixiv 3')
-    sys.exit(main())
+    a_token = sys.argv[1]
+    r_token = sys.argv[2]
+    sys.exit(main(a_token,r_token))
