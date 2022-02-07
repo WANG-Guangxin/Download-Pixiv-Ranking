@@ -317,53 +317,11 @@ def remove_repeat(_):
 
 def main(a_token,r_token):
     user = PixivApi(a_token,r_token)
-    if len(sys.argv) > 1:
-        print(datetime.datetime.now().strftime('%X %x'))
-        ids = arguments['<id>']
-        is_rank = arguments['-r']
-        date = arguments['--date']
-        is_update = arguments['-u']
-        if ids:
-            download_by_user_id(user, ids)
-        elif is_rank:
-            if date:
-                date = date[0]
-                download_by_history_ranking(user, date)
-            else:
-                download_by_ranking(user)
-        elif is_update:
-            update_exist(user)
-        print(datetime.datetime.now().strftime('%X %x'))
-    else:
-        print(_(' Pixiv Downloader 2.4 ').center(77, '#'))
-        options = {
-            '1': download_by_user_id,
-            '2': download_by_ranking,
-            '3': download_by_history_ranking,
-            '4': update_exist,
-            '5': remove_repeat
-        }
-        while True:
-            print(_('Which do you want to:'))
-            for i in sorted(options.keys()):
-                print('\t %s %s' % (i, _(options[i].__name__).replace('_', ' ')))
-            choose = input('\t e %s \n:' % _('exit'))
-            if choose in [str(i) for i in range(1, len(options) + 1)]:
-                print((' ' + _(options[choose].__name__).replace('_', ' ') + ' ').center(60, '#') + '\n')
-                if choose == 4:
-                    options[choose](user, False)
-                else:
-                    options[choose](user)
-                print('\n' + (' ' + _(options[choose].__name__).replace('_', ' ') + _(' finished ')).center(60,
-                                                                                                            '#') + '\n')
-            elif choose == 'e':
-                break
-            else:
-                print(_('Wrong input!'))
+    download_by_ranking(user)
+
 
 
 if __name__ == '__main__':
-    arguments = docopt(__doc__, version='pixiv 3')
     a_token = sys.argv[1]
     r_token = sys.argv[2]
     sys.exit(main(a_token,r_token))
