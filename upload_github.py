@@ -37,7 +37,7 @@ with open("./history/"+repo_name+'.md','w') as file_obj:
 access_token = sys.argv[1]
 g = Github(access_token)
 user = g.get_user()
-user.create_repo(repo_name)
+# user.create_repo(repo_name)
 cmd1 = f"cp ./history/{repo_name}.md ./Pixiv日榜/README.md"
 os.system(cmd1)
 
