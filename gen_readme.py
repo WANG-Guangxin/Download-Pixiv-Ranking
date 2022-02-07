@@ -14,7 +14,7 @@ for file_name in file_list:
     img = f'''<img src="./Pixiv日榜/{list_dir[0]}/{file_name}"  width="220" height="100%" alt="显示出错了">'''
     readme += img
     count += 1
-    if mod(count,3) == 0:
+    if count % 3 == 0:
         readme += '<br>'
 
 readme += '</p>'
