@@ -1,6 +1,7 @@
 from github import Github
 import os
 import json
+import sys
 
 list_dir = os.listdir('./Pixiv日榜')
 repo_name = list_dir[0]
@@ -22,7 +23,7 @@ file_obj.close()
 
 
 
-access_token = os.envrion["ACCESS_TOKEN"]
+access_token = sys.argv[1]
 g = Github(access_token)
 user = g.get_user()
 user.create_repo(repo_name)
@@ -32,9 +33,10 @@ remote_repo = f'''git remote add origin https://x-access-token:{access_token}@gi
 ch_dir = "cd ./Pixiv日榜/"+repo_name+'/'
 os.system(ch_dir)
 os.system("git init")
-os.system("git config --global user.name 'blogrepo'")
-os.system("git config --global user.email 'w-gx@outlook.com'")
+os.system("git config --local user.name 'blogrepo'")
+os.system("git config --local user.email 'w-gx@outlook.com'")
 os.system("git add .")
 os.system("git commit -m 'upload'")
 os.system(remote_repo)
 os.system("git push -f origin master")
+os.system("cd ../../")
