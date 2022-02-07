@@ -5,8 +5,8 @@ on:
 #   push:
 #     branches:
 #       [ master ]
-  watch:
-    types: started
+#   watch:
+#     types: started
   schedule:
     - cron: "0 7 * * *"
 
