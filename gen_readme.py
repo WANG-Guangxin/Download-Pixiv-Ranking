@@ -18,3 +18,6 @@ for file_name in file_list:
         readme += '<br>'
 
 readme += '</p>'
+
+with open('./README.md','w') as file_obj:
+    file_obj.write(readme)
