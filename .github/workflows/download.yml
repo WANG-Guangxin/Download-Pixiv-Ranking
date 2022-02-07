@@ -2,6 +2,9 @@
 name: download
 
 on:
+  push:
+    branches:
+      [ master ]
   watch:
     types: started
   schedule:
@@ -24,9 +27,11 @@ jobs:
           P_R_TOKEN: ${{ secrets.P_R_TOKEN }}
         run: |
           rm -rf ./Pixiv日榜/*
+          rm -rf ./README.md
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python pixiv.py
+          python gen_readme.py
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
