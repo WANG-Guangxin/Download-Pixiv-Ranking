@@ -224,7 +224,7 @@ def download_by_user_id(user, user_ids=None):
 
 def download_by_ranking(user):
     today = str(datetime.date.today())
-    save_path = os.path.join(get_default_save_path(), today + ' ranking')
+    save_path = os.path.join(get_default_save_path(), today)
     data_list = user.get_ranking_illustrations()
     download_illustrations(user, data_list, save_path, add_rank=True)
 
