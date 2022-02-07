@@ -22,7 +22,9 @@ jobs:
       - name: 'Commit'
         id: 'commit'
         run: |
-          pip3 install -r requirements.txt
+          /opt/hostedtoolcache/Python/3.8.12/x64/bin/python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          echo ${{ secrets.P_A_TOKEN }}
           python3 pixiv.py ${{ secrets.P_A_TOKEN }} ${{ secrets.P_R_TOKEN }} -r
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
