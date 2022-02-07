@@ -30,10 +30,10 @@ jobs:
           git init
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git branch -M master
           git add .
           git commit -m "upload"
           git remote add origin $REMOTE_REPO
+          git branch -M master
           git push -u origin master
           
           cd ..
