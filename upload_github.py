@@ -22,7 +22,7 @@ file_obj.close()
 
 
 
-access_token = os.envrion["access_token"]
+access_token = os.envrion["ACCESS_TOKEN"]
 g = Github(access_token)
 user = g.get_user()
 user.create_repo(repo_name)
