@@ -10,15 +10,15 @@ on:
     - cron: "0 7 * * *"
 
 jobs:
-  UpdateReadme:
+  download:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Download Readme'
+      - name: 'Download'
         uses: actions/checkout@v2
       - name: 'setup python'
         uses: actions/setup-python@master
         with: 
-          ptrhon-version: 3.8
+          python-version: 3.8
       - name: 'Commit'
         id: 'commit'
         run: |
