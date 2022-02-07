@@ -4,9 +4,9 @@ import json
 import sys
 
 list_dir = os.listdir('./Pixiv日榜')
-repo_name = list_dir[0]
+repo_name = list_dir[0][:10]
 
-file_list = os.listdir('./Pixiv日榜/'+repo_name+'/')
+file_list = os.listdir('./Pixiv日榜/'+list_dir[0]+'/')
 pic_url = 'https://raw.githubusercontent.com/blogrepo/'+repo_name+'/master/' 
 
 json_file = []
@@ -30,7 +30,7 @@ user.create_repo(repo_name)
 
 
 remote_repo = f'''git remote add origin https://x-access-token:{access_token}@github.com/blogrepo/{repo_name}'''
-ch_dir = "cd ./Pixiv日榜/"+repo_name+'/'
+ch_dir = "cd ./Pixiv日榜/"+list_dir[0]+'/'
 os.system(ch_dir)
 os.system("git init")
 os.system("git config --local user.name 'blogrepo'")
