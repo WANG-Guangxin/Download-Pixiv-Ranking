@@ -29,7 +29,7 @@ file_obj = open("./history/"+repo_name+'.json','w')
 file_obj.write(js_obj)
 file_obj.close()
 view += '</p>'
-with open("./history/"+repo_name+'.md',w) as file_obj:
+with open("./history/"+repo_name+'.md','w') as file_obj:
     file_obj.write(view)
 
 
