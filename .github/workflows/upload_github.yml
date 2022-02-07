@@ -1,9 +1,9 @@
 name: upload_github
 
 on:
-#   push:
-#     branches:
-#       [ master ]
+  push:
+    branches:
+      [ master ]
   schedule:
     - cron: "0 9 * * *"
 
@@ -25,6 +25,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyGithub
           python upload_github.py $ACCESS_TOKEN
+          cd ./Pixiv日榜
+          git init
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git branch -M master
+          git add .
+          git commit -m "upload"
+          git remote add origin $REMOTE_REPO
+          git push -u origin master
+          
+          cd ..
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
