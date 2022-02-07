@@ -1,26 +1,6 @@
 #!/usr/bin/env python3
 """
-pixiv
-
-Usage:
-    pixiv.py
-    pixiv.py <id>...
-    pixiv.py -r [-d | --date=<date>]
-    pixiv.py -u
-
-Arguments:
-    <id>                                       user_ids
-
-Options:
-    -r                                         Download by ranking
-    -d <date> --date <date>                    Target date
-    -u                                         Update exist folder
-    -h --help                                  Show this screen
-    -v --version                               Show version
-
-Examples:
-    pixiv.py 7210261 1980643
-    pixiv.py -r -d 2016-09-24
+    pixiv.py a_token r_token -r -d 2016-09-24
 """
 import datetime
 import math
@@ -52,9 +32,8 @@ _MAX_ERROR_COUNT = 5
 
 
 def get_default_save_path():
-    # current_path = os.path.dirname(os.path.abspath(sys.argv[0]))
-    base_path = "/www/wwwroot/list.cuffs.cf/DATA/"
-    filepath = os.path.join(base_path, 'Pixiv日榜')
+    current_path = os.path.dirname(os.path.abspath(sys.argv[0]))
+    filepath = os.path.join(current_path, 'Pixiv日榜')
     if not os.path.exists(filepath):
         with _CREATE_FOLDER_LOCK:
             if not os.path.exists(os.path.dirname(filepath)):
