@@ -324,4 +324,5 @@ def main(a_token,r_token):
 if __name__ == '__main__':
     a_token = sys.argv[1]
     r_token = sys.argv[2]
+    print(a_token,'\n',r_token)
     sys.exit(main(a_token,r_token))
