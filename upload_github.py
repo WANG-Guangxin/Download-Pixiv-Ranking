@@ -28,6 +28,7 @@ access_token = sys.argv[1]
 g = Github(access_token)
 user = g.get_user()
 user.create_repo(repo_name)
+repo = g.get_repo("blogrepo/"+repo_name)
 # cmd1 = f"cp ./history/{repo_name}.md ./Pixiv日榜/README.md"
 # os.system(cmd1)
 
@@ -71,7 +72,9 @@ for pic_name in file_list:
     view += img
     json_file.append(tmp)
     fdata = open_file("./Pixiv日榜/"+repo_name+"/"+pic_name)
-    upload_file(fdata,pic_name,access_token,repo_name)
+    fbase64 = file_base64(fdata)
+    repo.create_file(pic_name,"github action",fbase64)
+#     upload_file(fdata,pic_name,access_token,repo_name)
 js_obj = json.dumps(json_file)
 file_obj = open("./history/"+repo_name+'.json','w')
 file_obj.write(js_obj)
