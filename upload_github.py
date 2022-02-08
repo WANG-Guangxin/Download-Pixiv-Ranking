@@ -42,6 +42,7 @@ for pic_name in file_list:
     with open(file_path,'rb') as f:
         data = f.read()
         repo.create_file(pic_name,"github action",data)
+        print(pic_url+pic_name)
         
 js_obj = json.dumps(json_file)
 file_obj = open("./history/"+repo_name+'.json','w')
