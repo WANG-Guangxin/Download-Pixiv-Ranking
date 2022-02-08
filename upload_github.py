@@ -44,8 +44,6 @@ def file_base64(data):
     return data_b64
 
 def upload_file(file_data,file_name,token,repo_name):
-    file_name = ""  #文件名
-    token = "[token]"
     url = f"https://api.github.com/repos/blogrepo/{repo_name}/contents/"+file_name  # 用户名、库名、路径
     headers = {"Authorization": "token " + token}
     content = file_base64(file_data)
