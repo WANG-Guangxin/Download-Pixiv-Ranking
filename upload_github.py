@@ -35,7 +35,7 @@ for pic_name in file_list:
     tmp.clear()
     tmp["name"] = pic_name
     tmp["url"] = pic_url+pic_name
-    img = f'''<a><img src="{tmp['url']}"  width="220" height="100%" alt="显示出错了"></a>'''
+    img = f'''<a><img src="https://cdn.jsdelivr.net/gh/blogrepo/{repo_name}/{pic_name}"  width="220" height="100%" alt="显示出错了"></a>'''
     view += img
     json_file.append(tmp)
     file_path = "./Pixiv日榜/"+repo_name+"/"+pic_name
