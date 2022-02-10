@@ -27,8 +27,12 @@ tmp = {}
 access_token = sys.argv[1]
 g = Github(access_token)
 user = g.get_user()
-user.create_repo(repo_name)
-repo = g.get_repo("blogrepo/"+repo_name)
+try:
+    repo = user.create_repo(repo_name)
+except:
+    repo = g.get_repo('blogrepo/'+repo_name)
+     
+    
 
     
 for pic_name in file_list:
