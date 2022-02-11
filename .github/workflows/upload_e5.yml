@@ -31,7 +31,7 @@ jobs:
           mkdir .config/rclone
           touch /home/runner/.config/rclone/rclone.conf
           echo $RCLONE_CONF >> /home/runner/.config/rclone/rclone.conf
-          rclone sync ./Pixiv日榜/ E5:/img/Pixiv日榜
+          rclone copy -P ./Pixiv日榜/ E5:/img/Pixiv日榜
 #       - name: 'GitHub Push'
 #         if: steps.commit.output.status != 'success'
 #         uses: ad-m/github-push-action@v0.6.0
