@@ -25,7 +25,7 @@ jobs:
           curl https://rclone.org/install.sh | sudo bash
           rclone version
           rclone config file
-          echo $RCLONE_CONF 
+          echo $RCLONE_CONF >> /home/runner/.config/rclone/rclone.conf
           rclone sync ./Pixiv日榜/ E5:/img/Pixiv日榜
 #       - name: 'GitHub Push'
 #         if: steps.commit.output.status != 'success'
