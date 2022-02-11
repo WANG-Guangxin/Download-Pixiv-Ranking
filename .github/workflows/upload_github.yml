@@ -1,14 +1,14 @@
 name: upload_github
 
 on:
-  push:
-    branches: 
-      [ master ]
+#   push:
+#     branches: 
+#       [ master ]
   schedule:
     - cron: "0 9 * * *"
 
 jobs:
-  download:
+  upload_github:
     runs-on: ubuntu-latest
     steps:
       - name: 'upload_github'
