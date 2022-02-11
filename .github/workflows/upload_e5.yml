@@ -23,7 +23,8 @@ jobs:
           RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
         run: |
           curl https://rclone.org/install.sh | sudo bash
-          echo $RCLONE_CONF >> /home/runner/.config/rclone/rclone.conf
+          rclone version
+          echo $RCLONE_CONF >> (rclone config file)
           rclone sync ./Pixiv日榜/ E5:/img/Pixiv日榜
 #       - name: 'GitHub Push'
 #         if: steps.commit.output.status != 'success'
