@@ -7,8 +7,8 @@ on:
   schedule:
     - cron: "0 6 * * *"
   
-  jobs:
-  download:
+jobs:
+  upload_e5:
     runs-on: ubuntu-latest
     steps:
       - name: 'upload_e5'
