@@ -1,0 +1,33 @@
+name: upload_e5
+
+on:
+  push:
+    branches: 
+      [ master ]
+  schedule:
+    - cron: "0 6 * * *"
+  
+  jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'upload_e5'
+        uses: actions/checkout@v2
+      - name: 'setup python'
+        uses: actions/setup-python@master
+        with: 
+          python-version: 3.8
+      - name: 'Commit'
+        id: 'commit'
+        env: 
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+        run: |
+          curl https://rclone.org/install.sh | sudo bash
+          echo $RCLONE_CONF >> ~/.config/rclone/rclone.conf
+          rclone sync ./Pixiv日榜/ E5:/img/Pixiv日榜
+#       - name: 'GitHub Push'
+#         if: steps.commit.output.status != 'success'
+#         uses: ad-m/github-push-action@v0.6.0
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           branch: ${{ github.ref }}
