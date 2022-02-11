@@ -1,6 +1,6 @@
 name: upload_github
 
-# on:
+on:
 #   push:
 #     branches: 
 #       [ master ]
