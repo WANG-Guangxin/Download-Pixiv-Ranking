@@ -25,4 +25,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install --upgrade aligo
           python upload_ali.py $A_R_TOKEN
-       
+        
