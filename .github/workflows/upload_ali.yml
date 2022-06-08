@@ -1,28 +1,28 @@
-name: upload
+# name: upload
 
-on:
-#   push:
-#     branches:
-#       [ master ]
-  schedule:
-    - cron: "0 8 * * *"
+# on:
+# #   push:
+# #     branches:
+# #       [ master ]
+#   schedule:
+#     - cron: "0 8 * * *"
 
-jobs:
-  upload-ali:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'upload'
-        uses: actions/checkout@v2
-      - name: 'setup python'
-        uses: actions/setup-python@master
-        with: 
-          python-version: 3.8
-      - name: 'Commit'
-        id: 'commit'
-        env: 
-          A_R_TOKEN: ${{ secrets.A_R_TOKEN }}
-        run: |
-          python -m pip install --upgrade pip
-          pip install --upgrade aligo
-          python upload_ali.py $A_R_TOKEN
+# jobs:
+#   upload-ali:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: 'upload'
+#         uses: actions/checkout@v2
+#       - name: 'setup python'
+#         uses: actions/setup-python@master
+#         with: 
+#           python-version: 3.8
+#       - name: 'Commit'
+#         id: 'commit'
+#         env: 
+#           A_R_TOKEN: ${{ secrets.A_R_TOKEN }}
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install --upgrade aligo
+#           python upload_ali.py $A_R_TOKEN
         
