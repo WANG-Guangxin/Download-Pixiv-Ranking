@@ -1,47 +1,47 @@
 
-name: download
+# name: download
 
-on:
-#   push:
-#     branches:
-#       [ master ]
-#   watch:
-#     types: started
-  schedule:
-    - cron: "0 7 * * *"
+# on:
+# #   push:
+# #     branches:
+# #       [ master ]
+# #   watch:
+# #     types: started
+#   schedule:
+#     - cron: "0 7 * * *"
 
-jobs:
-  download:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Download'
-        uses: actions/checkout@v2
-      - name: 'setup python'
-        uses: actions/setup-python@master
-        with: 
-          python-version: 3.8
-      - name: 'Commit'
-        id: 'commit'
-        env: 
-          P_A_TOKEN: ${{ secrets.P_A_TOKEN }}
-          P_R_TOKEN: ${{ secrets.P_R_TOKEN }}
-        run: |
-          rm -rf ./Pixiv日榜/*
-          rm -rf ./README.md
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          python pixiv.py
-          python gen_readme.py
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git diff --quiet && git diff --staged --quiet || git commit -am 'Update'
-          echo ::set-output name=status::success
+# jobs:
+#   download:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: 'Download'
+#         uses: actions/checkout@v2
+#       - name: 'setup python'
+#         uses: actions/setup-python@master
+#         with: 
+#           python-version: 3.8
+#       - name: 'Commit'
+#         id: 'commit'
+#         env: 
+#           P_A_TOKEN: ${{ secrets.P_A_TOKEN }}
+#           P_R_TOKEN: ${{ secrets.P_R_TOKEN }}
+#         run: |
+#           rm -rf ./Pixiv日榜/*
+#           rm -rf ./README.md
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
+#           python pixiv.py
+#           python gen_readme.py
+#           git config --local user.email "action@github.com"
+#           git config --local user.name "GitHub Action"
+#           git add .
+#           git diff --quiet && git diff --staged --quiet || git commit -am 'Update'
+#           echo ::set-output name=status::success
        
-      - name: 'GitHub Push'
-        if: steps.commit.output.status != 'success'
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+#       - name: 'GitHub Push'
+#         if: steps.commit.output.status != 'success'
+#         uses: ad-m/github-push-action@v0.6.0
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           branch: ${{ github.ref }}
         
